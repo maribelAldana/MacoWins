@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 public class Ganancia {
 	
@@ -22,7 +22,9 @@ public class Ganancia {
 
 	public List<Venta> ventaPorFecha(Date fecha){
 	
-		return ventas.stream().filter(venta -> venta.laVentaSeEfectuoEnEstaFecha(fecha)).collect(Collectors.toList);
+		return ventas.stream()
+				.filter(venta -> venta.laVentaSeEfectuoEnEstaFecha(fecha))
+				.collect(Collectors.toList());
 	}
 	
 	public double ganaciaPorFecha(Date unaFecha) {

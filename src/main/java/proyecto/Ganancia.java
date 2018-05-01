@@ -1,5 +1,7 @@
 package proyecto;
 
+import static org.junit.Assume.assumeFalse;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,16 +20,16 @@ public class Ganancia {
 		this.ventas = ventas;
 	}
 
-	public Stream<Venta> ventaPorFecha(Date fecha){
+	public List<Venta> ventaPorFecha(Date fecha){
 	
-		return ventas.stream().filter(venta -> venta.laVentaSeEfectuoEnEstaFecha(fecha));
+		return ventas.stream().filter(venta -> venta.laVentaSeEfectuoEnEstaFecha(fecha)).collect(Collectors.toList);
 	}
 	
-	/*public double ganaciaPorFecha(Date unaFecha) {
+	public double ganaciaPorFecha(Date unaFecha) {
 		
-		return this.ventaPorFecha(unaFecha).stream().sum(venta -> venta.importePorVenta());
+		return this.ventaPorFecha(unaFecha).stream().mapToDouble(Venta::importePorVenta).sum();
 	}
-	*/
+	
 	
 
 }
